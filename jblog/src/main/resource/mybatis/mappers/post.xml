@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+	<insert id="insert" parameterType="postvo">
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+	<![CDATA[select last_insert_id()]]>
+		</selectKey>
+	<![CDATA[insert into post values(null,#{title},#{content},now(),#{category_no})]]>
+	</insert>
+	<select id="list" parameterType="long" resultType="postvo">
+	<![CDATA[select * from post where category_no=#{no}]]>
+	</select>
+	<select id="get" parameterType="long" resultType="postvo">
+	<![CDATA[select * from post where no=#{no}]]>
+	</select>
+</mapper>

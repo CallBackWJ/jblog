@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog">
+	<insert id="insert" parameterType="uservo">
+	<![CDATA[insert into blog values(#{no},#{name},'assets/images/spring-logo.jpg')]]>
+	</insert>
+	<select id="select" parameterType="long" resultType="blogvo">
+	<![CDATA[select * from blog where user_no=#{no}]]>
+	</select>
+	<update id="update" parameterType="blogvo">
+	<![CDATA[update blog set title=#{title},logo=#{logo} where user_no=#{user_no}]]>
+	</update>
+</mapper>
